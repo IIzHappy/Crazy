@@ -65,7 +65,7 @@ public class CrazyCounter : MonoBehaviour
         _crazyTextEnd.gameObject.SetActive(true);
 
         Color color = _redOverlay.color;
-        color.a = 1;
+        color.a = 0.85f;
         _redOverlay.color = color;
     }
 }
