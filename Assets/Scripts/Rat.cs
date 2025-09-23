@@ -31,6 +31,6 @@ public class Rat : MonoBehaviour
 
     private void Bounce()
     {
-        rb.AddForce(, ForceMode.Impulse);
+        //rb.AddForce(, ForceMode.Impulse);
     }
 }

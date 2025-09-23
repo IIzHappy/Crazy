@@ -36,11 +36,11 @@ public class PlayerController : MonoBehaviour
 
         move = new Vector3() + (Input.GetAxisRaw("Horizontal") * right) + (Input.GetAxisRaw("Vertical") * forward);
         rb.AddForce(move * speed);
-        Debug.Log(rb.velocity.magnitude);
+        Debug.Log(rb.linearVelocity.magnitude);
 
-        if ( new Vector2(rb.velocity.x, rb.velocity.z).magnitude >= maxSpeed)
+        if ( new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude >= maxSpeed)
         {
-            rb.velocity = new Vector3(rb.velocity.normalized.x * maxSpeed, rb.velocity.y, rb.velocity.normalized.z * maxSpeed);
+            rb.linearVelocity = new Vector3(rb.linearVelocity.normalized.x * maxSpeed, rb.linearVelocity.y, rb.linearVelocity.normalized.z * maxSpeed);
         }
 
         look = new Vector3(-Input.GetAxisRaw("Mouse Y"), Input.GetAxisRaw("Mouse X"), 0) * sens;
