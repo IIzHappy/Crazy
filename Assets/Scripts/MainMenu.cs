@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     
     void Update()
     {
-        _camera.Rotate(0, _cameraTurnSpeed, 0);
+        _camera.localEulerAngles = new Vector3(_camera.rotation.eulerAngles.x, (_camera.rotation.eulerAngles.y + _cameraTurnSpeed * Time.deltaTime) % 360, 0);
     }
 
     public void StartGame()
