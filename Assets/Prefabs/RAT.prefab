@@ -108,10 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827b4beca7b02bb4484d7954a5f158fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 4091876119889606927}
   player: {fileID: 0}
   moveSpeed: 3
   rotationSpeed: 5
+  death: {fileID: 8300000, guid: 50c63736eb27ff14aa59266688fb413c, type: 3}
+  hit: {fileID: 8300000, guid: f8e43181c3238d04eb1d03497cbac589, type: 3}
 --- !u!54 &4091876119889606927
 Rigidbody:
   m_ObjectHideFlags: 0

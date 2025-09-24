@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1547383680}
+    - target: {fileID: 8394044694888354683, guid: 006e4480193c07f4492fc85be8a0edc7, type: 3}
+      propertyPath: swoosh
+      value: 
+      objectReference: {fileID: 8300000, guid: f03d1195b2470104cb3116cfe7f4d025, type: 3}
     - target: {fileID: 9221648282291929486, guid: 006e4480193c07f4492fc85be8a0edc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 354.8593
