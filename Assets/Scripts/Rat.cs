@@ -56,6 +56,7 @@ public class Rat : MonoBehaviour
     }
     private void Bounce()
     {
-        //rb.AddForce(, ForceMode.Impulse);
+        Debug.Log("Hit");
+        rb.AddForce((pDirection + Vector3.up) * Random.Range(2f, 4f), ForceMode.Impulse);
     }
 }
