@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Camera cam;
+    [SerializeField] private Animator anim;
 
     [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         swing.SetActive(true);
         swinging = true;
+        anim.SetBool("SwingLeft", !anim.GetBool("SwingLeft"));
         swingTimer = 0.5f;
     }
 }
