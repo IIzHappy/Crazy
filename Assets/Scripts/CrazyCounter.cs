@@ -39,17 +39,6 @@ public class CrazyCounter : MonoBehaviour
 
         _pauseMenu.SetActive(true);
     }
-
-    //REMOVE THIS UPDATE WHEN U REFERENCE METHOD IN RAT SCRIPT
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AddCrazy();
-            Debug.Log(_crazyCounter + " - " + _crazyPercent);
-        }
-    }
-
     public void AddCrazy()
     {
         _crazyCounter++;
@@ -81,5 +70,7 @@ public class CrazyCounter : MonoBehaviour
         _redOverlay.color = color;
 
         _pauseMenu.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.None;
     }
 }

@@ -13,16 +13,20 @@ public class PlayerController : MonoBehaviour
     private bool swinging;
     private float swingTimer;
     public AudioClip swoosh;
+    public CrazyCounter CrazyCounter;
 
     Vector3 move;
     Vector3 look;
     Vector3 forward;
     Vector3 right;
 
+    public bool canPlay = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void FixedUpdate()
@@ -52,12 +56,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("tab"))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !swinging && canPlay)
         {
             Attack();
         }
@@ -81,5 +81,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("SwingLeft", !anim.GetBool("SwingLeft"));
         AudioSource.PlayClipAtPoint(swoosh, gameObject.transform.position);
         swingTimer = 0.5f;
+        CrazyCounter.AddCrazy();
     }
 }

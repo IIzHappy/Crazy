@@ -16,6 +16,7 @@ public class Rat : MonoBehaviour
     private bool isFollowing = false;
     public AudioClip death;
     public AudioClip hit;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,18 +26,22 @@ public class Rat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        Vector3 pDirection = player.position - transform.position;
-        pDirection.y = 0f;
-        transform.position += direction * moveSpeed * Time.deltaTime;
-        if(transform.position.y != 0)
+        if (!dead)
         {
-            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+
+            Vector3 direction = (player.position - transform.position).normalized;
+            Vector3 pDirection = player.position - transform.position;
+            pDirection.y = 0f;
+            transform.position += direction * moveSpeed * Time.deltaTime;
+            if (transform.position.y != 0)
+            {
+                transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+            }
+            Quaternion lookrotation = Quaternion.LookRotation(pDirection);
+            lookrotation *= Quaternion.Euler(0, +90f, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * rotationSpeed);
+
         }
-        Quaternion lookrotation = Quaternion.LookRotation(pDirection);
-        lookrotation *= Quaternion.Euler(0, +90f, 0);
-        transform.rotation=Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * rotationSpeed);
-        
 
 
 
@@ -61,6 +66,7 @@ public class Rat : MonoBehaviour
         Debug.Log("Hit");
         AudioSource.PlayClipAtPoint(hit, gameObject.transform.position);
         AudioSource.PlayClipAtPoint(death, gameObject.transform.position);
-        rb.AddForce((pDirection + Vector3.up) * Random.Range(2f, 4f), ForceMode.Impulse);
+        rb.AddForce((new Vector3(20, 10, 30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        
     }
 }
