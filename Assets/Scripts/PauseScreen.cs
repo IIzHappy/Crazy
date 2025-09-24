@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseScreen : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class PauseScreen : MonoBehaviour
             {
                 PauseGame();
             }
-            _paused = !_paused;
         }
     }
 
@@ -25,11 +25,18 @@ public class PauseScreen : MonoBehaviour
     {
         Time.timeScale = 0;
         _pauseMenu.SetActive(true);
+        _paused = true;
     }
 
     public void UnpauseGame()
     {
         Time.timeScale = 1;
         _pauseMenu.SetActive(false);
+        _paused = false;
+    }
+
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

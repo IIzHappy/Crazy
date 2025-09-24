@@ -14,8 +14,15 @@ public class CrazyCounter : MonoBehaviour
     float _crazyPercent = 0;
     [SerializeField] float _maxCrazy;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] GameObject _pauseMenu;
+
+
+    void Awake()
+    {
+        ResetGame();
+    }
+
+    public void ResetGame()
     {
         _crazyCounter = 0;
         _crazyPercent = 0;
@@ -29,7 +36,11 @@ public class CrazyCounter : MonoBehaviour
         Color color = _redOverlay.color;
         color.a = 0;
         _redOverlay.color = color;
+
+        _pauseMenu.SetActive(true);
     }
+
+    //REMOVE THIS UPDATE WHEN U REFERENCE METHOD IN RAT SCRIPT
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -55,10 +66,11 @@ public class CrazyCounter : MonoBehaviour
         _redOverlay.color = color;
 
         _crazyTextDefault.fontSize = Mathf.Lerp(_crazySizeStart, _crazySizeFinal, _crazyPercent);
-        Color colorText = Color.HSVToRGB(0, _crazyPercent * 1.2f, 1);
+        Color colorText = Color.HSVToRGB(0, _crazyPercent * 1.15f, 1);
         _crazyTextDefault.color = colorText;
     }
 
+    //Game over
     void MaxCrazy()
     {
         _crazyTextDefault.gameObject.SetActive(false);
@@ -67,5 +79,7 @@ public class CrazyCounter : MonoBehaviour
         Color color = _redOverlay.color;
         color.a = 0.85f;
         _redOverlay.color = color;
+
+        _pauseMenu.SetActive(false);
     }
 }
