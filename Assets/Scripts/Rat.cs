@@ -13,7 +13,9 @@ public class Rat : MonoBehaviour
 
     private Vector3 originalPosition;
     private Vector3 pDirection;
-    private bool isFollowing = false;     
+    private bool isFollowing = false;
+    public AudioClip death;
+    public AudioClip hit;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +59,8 @@ public class Rat : MonoBehaviour
     private void Bounce()
     {
         Debug.Log("Hit");
+        AudioSource.PlayClipAtPoint(hit, gameObject.transform.position);
+        AudioSource.PlayClipAtPoint(death, gameObject.transform.position);
         rb.AddForce((pDirection + Vector3.up) * Random.Range(2f, 4f), ForceMode.Impulse);
     }
 }

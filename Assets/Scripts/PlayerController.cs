@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject swing;
     private bool swinging;
     private float swingTimer;
+    public AudioClip swoosh;
 
     Vector3 move;
     Vector3 look;
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         swing.SetActive(true);
         swinging = true;
         anim.SetBool("SwingLeft", !anim.GetBool("SwingLeft"));
+        AudioSource.PlayClipAtPoint(swoosh, gameObject.transform.position);
         swingTimer = 0.5f;
     }
 }
