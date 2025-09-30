@@ -9,6 +9,7 @@ public class CrazyCounter : MonoBehaviour
     [SerializeField] float _crazySizeFinal;
     [SerializeField] TMP_Text _crazyTextEnd;
     [SerializeField] Image _redOverlay;
+    [SerializeField] TMP_Text _timer;
 
     float _crazyCounter = 0;
     float _crazyPercent = 0;
@@ -31,6 +32,7 @@ public class CrazyCounter : MonoBehaviour
         _crazyTextDefault.gameObject.SetActive(true);
         _crazyTextDefault.fontSize = _crazySizeStart;
         _crazyTextDefault.color = Color.HSVToRGB(0, 0, 100); ;
+        _timer.color = Color.HSVToRGB(0, 0, 100); ;
 
         _crazyTextEnd.gameObject.SetActive(false);
 
@@ -64,6 +66,7 @@ public class CrazyCounter : MonoBehaviour
         _crazyTextDefault.fontSize = Mathf.Lerp(_crazySizeStart, _crazySizeFinal, _crazyPercent);
         Color colorText = Color.HSVToRGB(0, _crazyPercent * 1.15f, 1);
         _crazyTextDefault.color = colorText;
+        _timer.color = colorText;
     }
 
     //Game over
