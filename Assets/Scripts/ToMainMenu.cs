@@ -3,11 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class ToMainMenu : MonoBehaviour
 {
-    public void Update()
+    public void MainMenu()
     {
-        if (Input.anyKey)
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -16,6 +16,7 @@ public class CrazyCounter : MonoBehaviour
 
     [SerializeField] GameObject _pauseMenu;
 
+    [SerializeField] PlayerController _playerController;
 
     void Awake()
     {
@@ -37,7 +38,11 @@ public class CrazyCounter : MonoBehaviour
         color.a = 0;
         _redOverlay.color = color;
 
+        _playerController.canPlay = true;
+
         _pauseMenu.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void AddCrazy()
     {
@@ -71,6 +76,10 @@ public class CrazyCounter : MonoBehaviour
 
         _pauseMenu.SetActive(false);
 
+        _playerController.canPlay = false;
+
         Cursor.lockState = CursorLockMode.None;
+
+        Time.timeScale = 0;
     }
 }

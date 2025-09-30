@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseScreen : MonoBehaviour
 {
     [SerializeField] GameObject _pauseMenu;
+    [SerializeField] PlayerController _player;
 
     bool _paused = false;
 
@@ -26,6 +27,8 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = 0;
         _pauseMenu.SetActive(true);
         _paused = true;
+        Cursor.lockState = CursorLockMode.None;
+        _player.canPlay = false;
     }
 
     public void UnpauseGame()
@@ -33,6 +36,8 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = 1;
         _pauseMenu.SetActive(false);
         _paused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        _player.canPlay = true;
     }
 
     public void ToMenu()
