@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     Vector3 forward;
     Vector3 right;
 
+    float camPitch;
+    float camRotation;
+
     public bool canPlay = true;
 
     void FixedUpdate()
@@ -44,11 +47,13 @@ public class PlayerController : MonoBehaviour
                 rb.linearVelocity = new Vector3(rb.linearVelocity.normalized.x * maxSpeed, rb.linearVelocity.y, rb.linearVelocity.normalized.z * maxSpeed);
             }
 
-            //look = new Vector3(-Input.GetAxisRaw("Mouse Y"), Input.GetAxisRaw("Mouse X"), 0) * sens;
-            //cam.transform.localEulerAngles += look;
-            
-            look = new Vector3(cam.transform.localEulerAngles.x - Input.GetAxisRaw("Mouse Y") * sens, cam.transform.localEulerAngles.y + Input.GetAxisRaw("Mouse X") * sens, 0);
-            cam.transform.localEulerAngles = look;
+            camPitch -= Input.GetAxisRaw("Mouse Y") * sens;
+            camRotation += (Input.GetAxisRaw("Mouse X") * sens) % 360;
+
+            camPitch = Mathf.Clamp(camPitch, -90, 90);
+
+            //Update cam pitch
+            cam.transform.localRotation = Quaternion.Euler(camPitch, camRotation, 0.0f);
         }
     }
 
@@ -80,6 +85,5 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("SwingLeft", !anim.GetBool("SwingLeft"));
         AudioSource.PlayClipAtPoint(swoosh, gameObject.transform.position);
         swingTimer = 0.5f;
-        CrazyCounter.AddCrazy();
     }
 }

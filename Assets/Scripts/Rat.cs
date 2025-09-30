@@ -16,11 +16,14 @@ public class Rat : MonoBehaviour
     private bool isFollowing = false;
     public AudioClip death;
     public AudioClip hit;
+
+    CrazyCounter crazyCounter;
     
     // Start is called before the first frame update
     void Start()
     {
         originalPosition = transform.position;
+        crazyCounter = FindFirstObjectByType<CrazyCounter>();
     }
 
     // Update is called once per frame
@@ -28,7 +31,6 @@ public class Rat : MonoBehaviour
     {
         if (!dead)
         {
-
             Vector3 direction = (player.position - transform.position).normalized;
             Vector3 pDirection = player.position - transform.position;
             pDirection.y = 0f;
@@ -40,11 +42,7 @@ public class Rat : MonoBehaviour
             Quaternion lookrotation = Quaternion.LookRotation(pDirection);
             lookrotation *= Quaternion.Euler(0, +90f, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * rotationSpeed);
-
         }
-
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,9 +62,9 @@ public class Rat : MonoBehaviour
     private void Bounce()
     {
         Debug.Log("Hit");
+        crazyCounter.AddCrazy();
         AudioSource.PlayClipAtPoint(hit, gameObject.transform.position);
         AudioSource.PlayClipAtPoint(death, gameObject.transform.position);
         rb.AddForce((new Vector3(20, 10, 30)) * Random.Range(2f, 4f), ForceMode.Impulse);
-        
     }
 }
