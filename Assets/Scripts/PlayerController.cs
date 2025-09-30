@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,7 +24,16 @@ public class PlayerController : MonoBehaviour
     float camPitch;
     float camRotation;
 
+    public Slider sensSlider;
+
     public bool canPlay = true;
+
+    private void Start()
+    {
+        swing.SetActive(false);
+        swinging = false;
+        sensSlider.value = sens;
+    }
 
     void FixedUpdate()
     {
@@ -85,5 +95,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("SwingLeft", !anim.GetBool("SwingLeft"));
         AudioSource.PlayClipAtPoint(swoosh, gameObject.transform.position);
         swingTimer = 0.5f;
+    }
+
+    public void ChangeSens()
+    {
+        sens = sensSlider.value;
     }
 }

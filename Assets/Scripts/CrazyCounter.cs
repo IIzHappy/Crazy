@@ -43,6 +43,8 @@ public class CrazyCounter : MonoBehaviour
         _pauseMenu.SetActive(true);
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        Time.timeScale = 1.0f;
     }
     public void AddCrazy()
     {
