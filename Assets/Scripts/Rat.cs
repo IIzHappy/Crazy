@@ -69,7 +69,31 @@ public class Rat : MonoBehaviour
         crazyCounter.AddCrazy();
         AudioSource.PlayClipAtPoint(hit, gameObject.transform.position);
         AudioSource.PlayClipAtPoint(death, gameObject.transform.position);
-        rb.AddForce((new Vector3(20, 10, 30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        if (rb.rotation.y >= 0f && rb.rotation.y < 90f)
+        {
+            rb.AddForce((new Vector3(-20, 10, -30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        }
+        else if (rb.rotation.y >= 90f && rb.rotation.y < 180f)
+        {
+            rb.AddForce((new Vector3(-20, 10, 30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        }
+        else if (rb.rotation.y >= 180f && rb.rotation.y < 270f)
+        {
+            rb.AddForce((new Vector3(20, 10, 30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        }
+        else if (rb.rotation.y >= 270f && rb.rotation.y < 360f)
+        {
+            rb.AddForce((new Vector3(20, 10, -30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        }
+        else if (rb.rotation.y >= -90f && rb.rotation.y < 0f)
+        {
+            rb.AddForce((new Vector3(20, 10, -30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        }
+        else if (rb.rotation.y >= -180f && rb.rotation.y < -90f)
+        {
+            rb.AddForce((new Vector3(20, 10, 30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        }
         gameObject.GetComponent<Animator>().enabled = false;
     }
 }
+ 
