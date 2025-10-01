@@ -29,6 +29,10 @@ public class Rat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameObject.transform.position.x >= 4.5 || gameObject.transform.position.z >=4.5 || gameObject.transform.position.x <= -4.5 || gameObject.transform.position.z <= -4.5)
+        {
+            Destroy(gameObject);
+        }
         if (!dead)
         {
             Vector3 direction = (player.position - transform.position).normalized;
@@ -66,5 +70,6 @@ public class Rat : MonoBehaviour
         AudioSource.PlayClipAtPoint(hit, gameObject.transform.position);
         AudioSource.PlayClipAtPoint(death, gameObject.transform.position);
         rb.AddForce((new Vector3(20, 10, 30)) * Random.Range(2f, 4f), ForceMode.Impulse);
+        gameObject.GetComponent<Animator>().enabled = false;
     }
 }
