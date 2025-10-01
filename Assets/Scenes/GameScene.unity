@@ -555,7 +555,7 @@ MonoBehaviour:
   Rat: {fileID: 5412441087962628263, guid: 9d373132aeddf764380b9555924d97d8, type: 3}
   SpawnerGO: {fileID: 334577914}
   spawnTimer: 2
-  SpawnDistance: 2
+  SpawnDistance: 1
   player: {fileID: 285831234}
   CamDirection: {fileID: 199356143}
   timer: 0
@@ -2820,6 +2820,7 @@ MonoBehaviour:
   _crazySizeFinal: 80
   _crazyTextEnd: {fileID: 8063534144917600177}
   _redOverlay: {fileID: 4922335137485589761}
+  _timer: {fileID: 2098195072}
   _maxCrazy: 30
   _pauseMenu: {fileID: 2234553852670688988}
   _playerController: {fileID: 285831236}
